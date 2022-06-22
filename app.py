@@ -9,7 +9,7 @@ import plotly.graph_objects as go
 #     return pd.read_excel("C:/Users/riche/Desktop/streamlit/titanic.xlsx")
 # df = get_data_from_excel()
 
-df = pd.read_excel("C:\\Users\\riche\\Desktop\\streamlit\\titanic.xlsx")
+df = pd.read_excel('titanic.xlsx')
 
 
 df['ticket'] = df['class']
