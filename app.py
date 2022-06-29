@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st 
 import plotly_express as px
 import plotly.graph_objects as go
+import matplotlib
 import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
