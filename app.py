@@ -2,7 +2,9 @@ import pandas as pd
 import streamlit as st 
 import plotly_express as px
 import plotly.graph_objects as go
+import matplotlib.pyplot as plt
 
+st.set_page_config(layout="wide")
 
 # @st.cache
 # def get_data_from_excel():
@@ -65,38 +67,40 @@ st.markdown("---")
 # Graphs/Visualizations
 
 # Class by Sex
-class_by_sex = (
+malevsfemale = (
     df_selection.groupby(by=["sex"]).count()["name"]
 )
 
-fig_class_sex = px.bar(
-    class_by_sex,
+fig_male_female = px.bar(
+    malevsfemale,
     x = "name",
-    y = class_by_sex.index,
+    y = malevsfemale.index,
     orientation = "h",
-    color_discrete_sequence=["#0083B8"] * len(class_by_sex),
+    color_discrete_sequence=["#0083B8"] * len(malevsfemale),
     template="plotly_white",
 )
 
-st.plotly_chart(fig_class_sex)
+# st.plotly_chart(fig_male_female)
 
 
 # Excursion by Class
-passenger_class = ["Yes", "No"]
+passenger_by_class = (
+    df_selection.groupby(by=["class"]).count()["name"]
+)
 
-fig_class_age = go.Figure(data=[
-    go.Bar(name = "First Class", x = passenger_class, y = [20, 14]),
-    go.Bar(name = "Second Class", x = passenger_class, y = [12, 18]),
-    go.Bar(name = "Third Class", x = passenger_class, y = [13, 15])
-])
+fig_passenger_class = px.bar(
+    passenger_by_class,
+    x="name",
+    y= passenger_by_class.index,
+    orientation = "v"
+)
 
-fig_class_age.update_layout(barmode="group")
-st.plotly_chart(fig_class_age)
+# st.plotly_chart(fig_passenger_class)
 
 
-# left_column, right_column = st.columns(2)
-# left_column.plotly_chart(fig_class_sex, use_container_width=True)
-# right_column.plotly_chart(fig_class_age, use_container_width=True)
+left_column, right_column = st.columns(2)
+left_column.plotly_chart(fig_male_female, use_container_width=True)
+right_column.plotly_chart(fig_passenger_class, use_container_width=True)
 
 st.write(df_selection)
 
