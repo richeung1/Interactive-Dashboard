@@ -3,6 +3,8 @@ import streamlit as st
 import plotly_express as px
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
+import base64
+from io import StringIO, BytesIO
 
 st.set_page_config(layout="wide")
 
@@ -116,3 +118,12 @@ right_column.plotly_chart(fig_passenger_class, use_container_width=True)
 
 st.write(df_selection)
 
+
+# Download Files
+st.subheader("Downloads:")
+
+with open('titanic.xlsx', 'rb') as my_file:
+    st.download_button(label= "Download Data (Excel)", data = my_file, file_name = "titanic.xlsx", mime = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+
+# generate_html_download_link1(fig_male_female)
+# generate_html_download_link2(fig_passenger_class)
