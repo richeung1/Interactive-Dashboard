@@ -6,15 +6,27 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
 
-# @st.cache
-# def get_data_from_excel():
-#     return pd.read_excel("C:/Users/riche/Desktop/streamlit/titanic.xlsx")
-# df = get_data_from_excel()
+# Hide Streamlit Style
+hide_st_style = """
+            <style>
+            #MainMenu {visibility:hidden;}
+            footer {visibility:hidden;}
+            header {visibility:hidden;}
+            </style.
+            """
 
-df = pd.read_excel('titanic.xlsx')
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 
-df['ticket'] = df['class']
+@st.cache(allow_output_mutation=True)
+def get_data_from_excel():
+    df = pd.read_excel('titanic.xlsx')
+    return df
+
+df = get_data_from_excel()
+
+
+# df['ticket'] = df['class']
 
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
@@ -27,8 +39,8 @@ Gender = st.sidebar.multiselect(
 
 Ticket = st.sidebar.multiselect(
     "Select the Class:",
-    options = df["ticket"].unique(),
-    default = df["ticket"].unique()
+    options = df["class"].unique(),
+    default = df["class"].unique()
 )
 
 Excursion = st.sidebar.multiselect(
@@ -103,5 +115,4 @@ left_column.plotly_chart(fig_male_female, use_container_width=True)
 right_column.plotly_chart(fig_passenger_class, use_container_width=True)
 
 st.write(df_selection)
-
 
