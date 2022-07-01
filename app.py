@@ -26,7 +26,7 @@ def get_data_from_excel():
 df = get_data_from_excel()
 
 
-df['ticket'] = df['class']
+df["ticket"] = df["class"]
 
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
