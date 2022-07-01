@@ -26,7 +26,7 @@ def get_data_from_excel():
 df = get_data_from_excel()
 
 
-# df['ticket'] = df['class']
+df['ticket'] = df['class']
 
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
@@ -39,8 +39,8 @@ Gender = st.sidebar.multiselect(
 
 Ticket = st.sidebar.multiselect(
     "Select the Class:",
-    options = df["class"].unique(),
-    default = df["class"].unique()
+    options = df["ticket"].unique(),
+    default = df["ticket"].unique()
 )
 
 Excursion = st.sidebar.multiselect(
