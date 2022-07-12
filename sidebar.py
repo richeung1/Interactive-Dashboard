@@ -3,7 +3,7 @@ import pandas as pd
 
 @st.cache(allow_output_mutation=True)
 def get_data_from_excel():
-    df = pd.read_excel(r'C:\Users\riche\Desktop\streamlit\titanic.xlsx')
+    df = pd.read_excel(r'titanic.xlsx')
     return df
 
 class Sidebar:

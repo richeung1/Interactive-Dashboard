@@ -36,7 +36,7 @@ def main():
     # Download Files
     st.subheader("Downloads:")
 
-    with open(r'C:\Users\riche\Desktop\streamlit\titanic.xlsx', 'rb') as my_file:
+    with open(r'titanic.xlsx', 'rb') as my_file:
         st.download_button(label= "Download Data (Excel)", data = my_file, file_name = "titanic.xlsx", mime = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
 if __name__ == '__main__':
