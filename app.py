@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 import matplotlib
 import matplotlib.pyplot as plt
 import base64
-import tkinter as tk
+# import tkinter as tk
 from io import StringIO, BytesIO
 from sidebar import Sidebar
 from graphs import Visualizer
