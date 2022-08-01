@@ -1,11 +1,13 @@
 import streamlit as st
 import pandas as pd
 
+# Caching
 @st.cache(allow_output_mutation=True)
 def get_data_from_excel():
     df = pd.read_excel(r'titanic.xlsx')
     return df
 
+# Creating Sidebar filters
 class Sidebar:
 
     def __init__(self):
@@ -36,7 +38,7 @@ class Sidebar:
         self.df_selection = self.df.query(
             "sex == @self.gender & went_excursion == @self.excursion & ticket == @self.ticket"
         )
-        # TOP KPI's
+        # Creating Metrics/KPI's
         total_passengers = self.df_selection["name"].count()
         average_age = round(self.df_selection["age"].mean(), 1)
         total_excursions = self.df_selection["went_excursion"].sum()

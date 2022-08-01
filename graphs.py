@@ -9,12 +9,14 @@ import plotly.io as pio
 
 pio.renderers.default = 'browser'
 
+# Creating charts/visualizations
 class Visualizer:
 
     def __init__(self):
         self.sidebar = Sidebar()
         self.sidebar.select()
     
+    # Graph showing number of males and females
     def male_v_female(self):
         self.malevsfemale = (
             self.sidebar.df_selection.groupby(by=["sex"]).count()["name"]
@@ -35,11 +37,11 @@ class Visualizer:
         figure.update_layout(title_x=0.5)
         return figure
 
+    # Graph showing number of people who went on excursions
     def passengers(self):
         self.passenger_by_class = (self.sidebar.df_selection[['ticket', 'went_excursion']])
         self.passenger_by_class['went_excursion'] = self.passenger_by_class['went_excursion'].replace([0, 1], ['No', 'Yes'])
         crosstab= pd.crosstab(self.passenger_by_class['ticket'], self.passenger_by_class['went_excursion'])
-        # st.write(crosstab)
 
         data = []
         for x in crosstab.columns:

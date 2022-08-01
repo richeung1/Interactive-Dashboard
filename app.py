@@ -10,12 +10,9 @@ from io import StringIO, BytesIO
 from sidebar import Sidebar
 from graphs import Visualizer
 
+# Formatting Streamlit layout
 st.set_page_config(layout="wide")
 
-# Hide Streamlit Style
-
-
-# ---- SIDEBAR ----
 def main(): 
     hide_st_style = """
                 <style>
@@ -24,16 +21,15 @@ def main():
                 header {visibility:hidden;}
                 </style.
                 """
-    # ---- MAIN PAGE ----
+    # Main page
     st.title(":bar_chart: Titanic Dashboard")
     st.markdown("##")
 
-    # ---- VISUaLIZATIONS ----
+    # Visualizations
     visualizer = Visualizer()
     visualizer.visualize()
 
-
-    # Download Files
+    # Download File Button
     st.subheader("Downloads:")
 
     with open(r'titanic.xlsx', 'rb') as my_file:
