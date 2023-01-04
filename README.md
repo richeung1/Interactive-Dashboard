@@ -1,7 +1,7 @@
 # Data Visualization with Titanic Dataset
 
-Using Python, Streamlit, and Heroku to create an interactive dashboard based on Titanic Cruise Ship Data.
+Used Python and Streamlit to create an interactive, online dashboard based on Titanic Cruise Ship Data.
 
 To view click below:
 
-https://titanicdataricky.herokuapp.com/
+https://titanicdataricky.streamlit.app/
