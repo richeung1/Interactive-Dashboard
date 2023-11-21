@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 
 # Caching
-@st.cache_data
-# @st.cache(allow_output_mutation=True)
+# @st.cache_data
+@st.cache(allow_output_mutation=True)
 def get_data_from_excel():
     df = pd.read_excel(r'titanic.xlsx')
     return df
